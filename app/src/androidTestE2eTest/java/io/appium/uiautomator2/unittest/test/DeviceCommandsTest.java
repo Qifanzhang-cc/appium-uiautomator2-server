@@ -639,7 +639,7 @@ public class DeviceCommandsTest extends BaseTest {
 
         String uiSelectorSpec = "new UiSelector()" +
                 ".classNameMatches(\"android.widget.RelativeLayout\")" +
-                ".childSelector(new UiSelector().textStartsWith(\"Parent checkbox\"))";
+                ".childSelector(new UiSelector().textStartsWith(\"Child checkbox\"))";
 
         By by = By.androidUiAutomator(uiSelectorSpec);
 

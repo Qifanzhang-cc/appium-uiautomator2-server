@@ -102,7 +102,7 @@ public class ActionsCommandsTest extends BaseTest {
     @Test
     public void verifyTypingText() throws JSONException {
         setupEditView();
-
+        System.out.println("RUNNING THE TEST...");
         Response edit = findElement(By.id("io.appium.android.apis:id/username_edit"));
         click(edit.getElementId());
         final JSONArray actionsJson = new JSONArray("[ {" +
@@ -117,6 +117,7 @@ public class ActionsCommandsTest extends BaseTest {
         Response actionsResponse = performActions(actionsJson);
         assertTrue(actionsResponse.isSuccessful());
         Response response = getText(edit.getElementId());
+        System.out.println("DONE RUNNING THE TEST...");
         assertThat((String) response.getValue(), equalTo("hi"));
     }
 }

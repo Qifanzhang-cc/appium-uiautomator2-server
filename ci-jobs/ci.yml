@@ -15,5 +15,8 @@ jobs:
       displayName: Install Node dependencies
     - script: bash ci-jobs/scripts/start-emulator.sh
       displayName: Create and run Emulator
-    - script: ./gradlew clean connectedE2ETestDebugAndroidTest -Pandroid.testInstrumentationRunnerArguments.notAnnotation=$E2E_TEST_PACKAGE.internal.SkipHeadlessDevices
+    - script: ./gradlew connectedE2eTestDebugAndroidTest -Pandroid.testInstrumentationRunnerArguments.class=io.appium.uiautomator2.unittest.test.ActionsCommandsTest -Pandroid.testInstrumentationRunnerArguments.notAnnotation=io.appium.uiautomator2.unittest.test.internal.SkipHeadlessDevices
       displayName: Run Gradle Tests
+    - bash: adb logcat -d
+      condition: or(succeeded(), failed())
+      displayName: 'logcat'
